@@ -1,0 +1,2 @@
+Ejecución y creación de jacoco (comando ejecutable en la consola de maven)
+mvn clean install jacoco:prepare-agent jacoco:report
