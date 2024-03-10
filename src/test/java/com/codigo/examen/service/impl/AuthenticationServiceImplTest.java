@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.authentication.AuthenticationManager;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -47,11 +48,11 @@ class AuthenticationServiceImplTest {
     void signUpUser() {
         SignUpRequest request = usuarioRequest();
         Usuario usuario = createUsuario();
-        when(rolRepository.findByNombreRol("USER")).thenReturn(getRol());
+        Optional<Rol> role = getRol();
+        when(rolRepository.findByNombreRol("USER")).thenReturn(role);
         when(usuarioRepository.save(usuario)).thenReturn(usuario);
-        System.out.println("datos");
-        System.out.println(authentication.signUpUser(request));
-        assertEquals(usuario.getUsername(),authentication.signUpUser(request).getUsername());
+        Usuario test=authentication.signUpUser(request);
+        assertEquals(usuario.getUsername(),test.getUsername());
     }
 
     @Test

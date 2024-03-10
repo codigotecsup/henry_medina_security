@@ -40,30 +40,10 @@ class UsuarioServiceImplTest {
 
     @Test
     void createUsuarioOutSuccess() {
-       /* Usuario usuarioRequest = new Usuario();
-        usuarioRequest.setUsername("kordero");
-        usuarioRequest.setIdUsuario(123L);
-        usuarioRequest.setTelefono("921984319");
-        usuarioRequest.setPassword("123456");
-        usuarioRequest.setEmail("elpadredelcordero@gmail.com");
-        //Optional<Usuario> existinUser = getFindByUserName();
-        Optional<Rol> roleMock= getRol();
-        //*Indicamos que el usuario no existe para que se pueda crear
-        when(usuarioRepository.findByUsername(anyString())).thenReturn(Optional.empty());
-        //*Creamos un rol de user
-        when(rolRepository.findByNombreRol(anyString())).thenReturn(roleMock);
-        //* Cuando intenta guardar el usuario que
-        Set<Rol> roleTest=new HashSet<>();
-        roleTest.add(roleMock.get());
-        usuarioRequest.setRoles(roleTest);
-        when(usuarioRepository.save(new Usuario())).thenReturn(usuarioRequest);
-        ResponseEntity<Usuario> usuarioSalvado=  usuarioService.createUsuario(usuarioRequest);
-        System.out.println("usuario"+usuarioSalvado);
-        assertEquals(usuarioRequest.getUsername(), usuarioSalvado.getBody().getUsername());*/
-       /* Usuario usuarioRequest= createUsuario();
+        Usuario usuarioRequest= createUsuario();
+        when(rolRepository.findByNombreRol("USER")).thenReturn(getRol());
         when(usuarioRepository.findByUsername("kordero")).thenReturn(Optional.empty());
-        assertEquals(HttpStatus.CREATED, usuarioService.createUsuario(usuarioRequest));*/
-
+        assertEquals(HttpStatus.CREATED, usuarioService.createUsuario(usuarioRequest).getStatusCode());
     }
 
     @Test
